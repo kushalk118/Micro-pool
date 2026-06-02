@@ -4,7 +4,7 @@ Micro Pool is a high-fidelity, interactive 2D pocket billiards simulator built u
 
 ---
 
-### 🌐 [Live Deployment Link](https://kushalk118.github.io/Micro-pool/)
+### 🌐 [Live Deployment Link](https://micro-pool-u4iq.vercel.app/)
 
 ---
 
