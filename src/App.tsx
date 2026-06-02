@@ -75,6 +75,7 @@ export default function App() {
   const [player1Target, setPlayer1Target] = useState<'solid' | 'stripe' | null>(null);
   const [player2Target, setPlayer2Target] = useState<'solid' | 'stripe' | null>(null);
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [resetCounter, setResetCounter] = useState(0);
 
   // Initialize the ball layout (Rack setup)
   const initializeBalls = (): Ball[] => {
@@ -151,6 +152,7 @@ export default function App() {
     setPlayer1Target(null);
     setPlayer2Target(null);
     setBalls(initializeBalls());
+     setResetCounter(prev => prev + 1);
   };
 
   const toggleSound = () => {
@@ -160,7 +162,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-6 px-4 md:px-8 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950">
+    <div className="min-h-screen flex flex-col items-center py-6 px-4 md:px-8 relative overflow-x-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-slate-950">
       
       {/* Dynamic glow decoration background */}
       <div className="absolute top-[-20%] left-[-10%] w-[50%] aspect-square rounded-full bg-cyan-900/10 blur-[120px] pointer-events-none" />
@@ -204,6 +206,7 @@ export default function App() {
             player2Target={player2Target}
           />
           <GameCanvas
+            key={resetCounter}
             gameState={gameState}
             setGameState={setGameState}
             balls={balls}

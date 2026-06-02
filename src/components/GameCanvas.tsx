@@ -60,6 +60,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
   stateRef.current = gameState;
   const ballsRef = useRef(balls);
   ballsRef.current = balls;
+ 
 
   // Active target group for current player
   const getActiveTargetGroup = (): 'solid' | 'stripe' | 'all' | 'eight' => {
@@ -189,7 +190,7 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [dragStart, currentMouse, isDragging, ballInHand, bihOverlap, tableStyle, aiCueAnim]);
+  }, [dragStart, currentMouse, isDragging, ballInHand, bihOverlap, aiCueAnim]);
 
   // 2. Trigger AI Shot when it is AI's turn
   useEffect(() => {
@@ -762,10 +763,13 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({
         ctx.fill();
 
         // Draw Number digit
-        ctx.fillStyle = '#0f172a';
-        ctx.font = `bold ${r * 0.55}px sans-serif`;
+        ctx.fillStyle = '#000000';
+        ctx.font = `900 ${r * 0.75}px Arial`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 1;
+        ctx.strokeText(ball.number.toString(), x, y + 0.5);
         ctx.fillText(ball.number.toString(), x, y + 0.5);
       } else {
         // Cue ball: draw small red spot to help visual spins

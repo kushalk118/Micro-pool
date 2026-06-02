@@ -59,7 +59,7 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
   };
 
   return (
-    <div className="glass p-5 rounded-2xl flex flex-col gap-4 w-full">
+    <div className="glass p-5 rounded-2xl flex flex-col gap-4 w-full overflow-visible">
       {/* Player Header Cards */}
       <div className="grid grid-cols-2 gap-4">
         {/* Player 1 Card */}
@@ -124,15 +124,15 @@ export const ScoreBoard: React.FC<ScoreBoardProps> = ({
       </div>
 
       {/* Ticker Status Alerts */}
-      <div className="bg-slate-950/60 border border-slate-800 px-4 py-2.5 rounded-xl flex items-center min-h-[42px] relative overflow-hidden">
-        <div className={`w-1.5 h-full absolute left-0 top-0 ${
+      <div className="bg-slate-950/60 border border-slate-800 px-5 py-2.5 rounded-xl flex items-center min-h-[42px] relative overflow-hidden">
+        <div className={`w-1.5 h-full absolute left-1000 top-0 ${
           statusMessage.toLowerCase().includes('foul') || statusMessage.toLowerCase().includes('scratch')
             ? 'bg-red-500'
             : statusMessage.toLowerCase().includes('win')
             ? 'bg-purple-500'
             : 'bg-cyan-500'
         }`} />
-        <p className="text-xs font-semibold text-slate-200 tracking-wide pl-1">
+        <p className="text-xs font-semibold text-slate-200 tracking-wide pl-6">
           {statusMessage || 'Shoot when ready.'}
         </p>
       </div>
